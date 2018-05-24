@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Car;
+use App\Vehicle;
 use Illuminate\Http\Request;
 
-class CarsController extends Controller
+class VehiclesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +19,12 @@ class CarsController extends Controller
 
     public function getAll()
     {
-        return Car::all();
+        return Vehicle::all()->load('manufacturer');
     }
 
     public function getOne($id)
     {
-        return Car::find($id);
+        return Vehicle::find($id)->load('manufacturer');
     }
 
     /**

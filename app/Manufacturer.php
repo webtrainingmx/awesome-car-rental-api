@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manufacturer extends Model
 {
-    public function cars()
+    public function vehicles()
     {
-        return $this->hasMany('App\Car');
+        return $this->hasMany('App\Vehicle');
     }
 }
