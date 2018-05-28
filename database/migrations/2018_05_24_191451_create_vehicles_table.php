@@ -21,8 +21,8 @@ class CreateVehiclesTable extends Migration
             $table->decimal('price');
             $table->string('link');
             $table->string('image');
+            $table->boolean('rented');
             $table->string('thumbnail');
-
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers')

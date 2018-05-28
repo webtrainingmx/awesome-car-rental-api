@@ -10,4 +10,10 @@ class Vehicle extends Model
     {
         return $this->belongsTo('App\Manufacturer');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'user_vehicle')
+            ->withPivot('starts_on', 'ends_on');
+    }
 }

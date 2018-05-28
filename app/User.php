@@ -28,6 +28,12 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
+    public function vehicles()
+    {
+        return $this->belongsToMany('App\Vehicle', 'user_vehicle')
+            ->withPivot('starts_on', 'ends_on');
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
