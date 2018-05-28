@@ -27,7 +27,7 @@ Route::get('/manufacturers/{id}', 'ManufacturersController@getOne');
 // Auth
 Route::post('/auth/login', 'TokensController@login');
 Route::post('/auth/refresh', 'TokensController@refreshToken');
-Route::post('/auth/invalidate', 'TokensController@invalidateToken');
+Route::post('/auth/logout', 'TokensController@logout');
 
 //});
 
