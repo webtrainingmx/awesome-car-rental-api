@@ -65,8 +65,19 @@ class TokensController extends Controller
 
     }
 
-    public function expireToken()
+    public function invalidateToken()
     {
+
+        $token = JWTAuth::getToken();
+
+        try {
+            $token = JWTAuth::invalidate($token);
+            return response()->json(['token' => $token]);
+        } catch (TokenExpiredException $ex) {
+            throw new HttpResponseException(
+                \response()->json(['code' => 3, 'message' => 'Need to login again, please!'])
+            );
+        }
 
     }
 }
