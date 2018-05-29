@@ -31,3 +31,6 @@ Route::post('/auth/logout', 'TokensController@logout');
 
 //});
 
+Route::group(['middleware' => ['jwt.auth']], function () {
+    Route::get('/rentals/user', 'RentalsController@getRentalsByUserId');
+});

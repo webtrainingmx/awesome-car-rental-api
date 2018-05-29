@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -36,7 +37,11 @@ class TokensController extends Controller
         $token = JWTAuth::attempt($credentials);
 
         if ($token) {
-            return response()->json(['token' => $token]);
+
+            return response()->json([
+                'token' => $token,
+                'user' => User::where('email', $credentials['email'])->get()->first()
+            ]);
         } else {
             return response()->json([
                 'success' => false,

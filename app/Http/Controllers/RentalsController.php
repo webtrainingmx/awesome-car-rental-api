@@ -14,4 +14,12 @@ class RentalsController extends Controller
         return view('rentals.index')->with('user', $user);
     }
 
+    public function getRentalsByUserId()
+    {
+        $user = Auth::user();
+        $vehicles = $user->vehicles()->with('manufacturer')->get();
+
+        return response()->json($vehicles, 200);
+    }
+
 }
