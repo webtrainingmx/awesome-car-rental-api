@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 28, 2018 at 07:27 PM
+-- Generation Time: May 29, 2018 at 01:38 AM
 -- Server version: 5.7.20
 -- PHP Version: 7.1.11
 
@@ -112,7 +112,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Esmeralda', 'esmeralda@webtraining.zone', '$2y$10$jDqiWMI.brCVc.LJduHiauek9WyGISWeSFEOTcNdVitcxUFPIF.WK', NULL, '2018-05-24 23:01:48', '2018-05-24 23:01:48');
+(1, 'Esmeralda', 'esmeralda@webtraining.zone', '$2y$10$jDqiWMI.brCVc.LJduHiauek9WyGISWeSFEOTcNdVitcxUFPIF.WK', NULL, '2018-05-24 23:01:48', '2018-05-24 23:01:48'),
+(2, 'Luis', 'luis@webtraining.zone', '$2y$10$SlezohdhEbEZ5DxEQgKLueTPrYyv7p.igFohffw4FzpNT3oD7eIh2', NULL, '2018-05-29 05:19:00', '2018-05-29 05:19:00');
 
 -- --------------------------------------------------------
 
@@ -136,7 +137,9 @@ CREATE TABLE `user_vehicle` (
 --
 
 INSERT INTO `user_vehicle` (`id`, `user_id`, `vehicle_id`, `starts_on`, `ends_on`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2018-05-28 00:00:00', '2018-05-31 00:00:00', '2018-05-28 05:00:00', '2018-05-28 05:00:00');
+(1, 1, 1, '2018-05-28 00:00:00', '2018-05-31 00:00:00', '2018-05-28 05:00:00', '2018-05-28 05:00:00'),
+(2, 1, 6, '2018-05-28 00:00:00', '2018-05-31 00:00:00', '2018-05-28 05:00:00', '2018-05-28 05:00:00'),
+(3, 2, 7, '2018-05-28 00:00:00', '2018-05-31 00:00:00', '2018-05-28 05:00:00', '2018-05-28 05:00:00');
 
 -- --------------------------------------------------------
 
@@ -169,8 +172,8 @@ INSERT INTO `vehicles` (`id`, `manufacturer_id`, `model`, `year`, `price`, `link
 (3, 3, 'TT', 2017, '220.00', 'http://en.wikipedia.org/wiki/Audi_TT', 'Audi-TT.jpg', 0, 'Audi-TT-thumbnail.jpg', '2018-04-24 16:22:20', '2018-04-24 16:22:20'),
 (4, 3, 'S5', 2018, '220.00', 'http://en.wikipedia.org/wiki/Audi_S5#Audi_S5', 'Audi-S5.jpg', 0, 'Audi-S5-thumbnail.jpg', '2018-04-30 16:22:20', '2018-04-30 16:22:20'),
 (5, 4, 'Civic Type-R', 2018, '98.00', 'https://en.wikipedia.org/wiki/Honda_Civic_Type_R', 'Civic-Type-R.jpg', 0, 'Civic-Type-R-thumbnail.jpg', '2018-05-30 16:22:20', '2018-05-30 16:22:20'),
-(6, 2, 'Camry', 2018, '86.00', 'https://en.wikipedia.org/wiki/Toyota_Camry', 'Camry.jpg', 0, 'Camry-thumbnail.jpg', '2018-05-15 16:22:20', '2018-05-15 16:22:20'),
-(7, 2, 'Prius', 2017, '78.00', 'https://en.wikipedia.org/wiki/Toyota_Prius', 'Prius.jpg', 0, 'Prius-thumbnail.jpg', '2018-05-18 16:22:20', '2018-05-18 16:22:20'),
+(6, 2, 'Camry', 2018, '86.00', 'https://en.wikipedia.org/wiki/Toyota_Camry', 'Camry.jpg', 1, 'Camry-thumbnail.jpg', '2018-05-15 16:22:20', '2018-05-15 16:22:20'),
+(7, 2, 'Prius', 2017, '78.00', 'https://en.wikipedia.org/wiki/Toyota_Prius', 'Prius.jpg', 1, 'Prius-thumbnail.jpg', '2018-05-18 16:22:20', '2018-05-18 16:22:20'),
 (8, 6, 'Spark', 2017, '48.00', 'https://en.wikipedia.org/wiki/Chevrolet_Spark', 'Spark.jpg', 0, 'Spark-thumbnail.jpg', '2018-05-21 16:22:20', '2018-05-21 16:22:20'),
 (9, 7, 'XV', 2017, '90.00', 'https://de.wikipedia.org/wiki/Subaru_XV', 'XV.jpg', 0, 'XV-thumbnail.jpg', '2018-05-21 16:22:20', '2018-05-21 16:22:20'),
 (10, 7, 'Impreza', 2017, '60.00', 'https://en.wikipedia.org/wiki/Subaru_Impreza', 'Impreza.jpg', 0, 'Impreza-thumbnail.jpg', '2018-05-21 16:22:20', '2018-05-21 16:22:20'),
@@ -240,13 +243,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_vehicle`
 --
 ALTER TABLE `user_vehicle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
