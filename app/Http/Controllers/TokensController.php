@@ -41,7 +41,7 @@ class TokensController extends Controller
             return response()->json([
                 'token' => $token,
                 'user' => User::where('email', $credentials['email'])->get()->first()
-            ]);
+            ], 200);
         } else {
             return response()->json([
                 'success' => false,
@@ -58,7 +58,7 @@ class TokensController extends Controller
 
         try {
             $token = JWTAuth::refresh($token);
-            return response()->json(['success' => true, 'token' => $token]);
+            return response()->json(['success' => true, 'token' => $token], 200);
         } catch (TokenExpiredException $ex) {
             // We were unable to refresh the token, our user needs to login again
             return response()->json([
@@ -68,7 +68,7 @@ class TokensController extends Controller
             // Blacklisted token
             return response()->json([
                 'code' => 4, 'success' => false, 'message' => 'Need to login again, please (blacklisted)!'
-            ]);
+            ], 422);
         }
 
     }
@@ -86,7 +86,7 @@ class TokensController extends Controller
         } catch (JWTException $e) {
             return response()->json([
                 'code' => 6, 'success' => false, 'message' => 'Failed to logout, please try again.'
-            ]);
+            ], 422);
         }
 
     }

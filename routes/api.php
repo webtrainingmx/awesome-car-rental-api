@@ -33,4 +33,6 @@ Route::post('/auth/logout', 'TokensController@logout');
 
 Route::group(['middleware' => ['jwt.auth']], function () {
     Route::get('/rentals/user', 'RentalsController@getRentalsByUserId');
+    Route::put('/rentals/user/rent-vehicle/{vehicleId}', 'RentalsController@rentVehicle');
+    Route::put('/rentals/user/cancel-vehicle/{vehicleId}', 'RentalsController@cancelVehicle');
 });
