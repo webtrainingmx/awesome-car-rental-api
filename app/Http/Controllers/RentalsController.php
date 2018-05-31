@@ -32,7 +32,7 @@ class RentalsController extends Controller
             return response(['message' => 'Already rented, please choose another vehicle'], 422);
         }
 
-        // Rent the car
+        // Rent the vehicle
         $vehicle->rented = TRUE;
         $vehicle->save();
 
@@ -45,6 +45,22 @@ class RentalsController extends Controller
             'ends_on' => $ends_on
         ]);
         return response(['message' => 'Rented'], 200);
+    }
+
+    public function cancelVehicle($vehicleId)
+    {
+        $user = Auth::user();
+        $vehicle = Vehicle::where('id', $vehicleId)->first();
+
+        if (!$vehicle->rented) {
+            return response(['message' => 'Vehicle not rented yet, please try with other vehicle'], 422);
+        }
+
+        // Cancel the rental
+        $vehicle->rented = FALSE;
+        $vehicle->save();
+        $user->vehicles()->detach($vehicle);
+        return response(['message' => 'Rental was removed'], 200);
     }
 
 }
