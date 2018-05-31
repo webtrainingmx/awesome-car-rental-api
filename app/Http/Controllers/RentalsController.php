@@ -57,6 +57,7 @@ class RentalsController extends Controller
         }
 
         // Cancel the rental
+        // @FIXME: We should only allow the user to remove his own vehicles!
         $vehicle->rented = FALSE;
         $vehicle->save();
         $user->vehicles()->detach($vehicle);
